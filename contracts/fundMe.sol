@@ -6,7 +6,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 error NotOwner();
 
 contract FundMe {
-    using PriceConvertorSol for uint256;
+    using PriceConvertor for uint256;
     uint256 public constant MINIMUM_USD = 50 * 1e18;
     address public owner;
 

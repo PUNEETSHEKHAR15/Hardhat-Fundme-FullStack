@@ -1,5 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
-require("@nomiclabs/hardhat-waffle");
+// require("@nomiclabs/hardhat-waffle");
 require("dotenv").config()
 require("hardhat-deploy")
 require("hardhat-gas-reporter")
@@ -37,5 +37,13 @@ module.exports = {
     outputFile: "gas-reporter.txt",
     nocolor: true,
   },
+  namedAccounts: {
+    deployer: {
+      default: 0,
+    },
+    user: {
+      default: 1,
+    }
+  }
 
 }
