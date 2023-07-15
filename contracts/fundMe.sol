@@ -10,8 +10,11 @@ contract FundMe {
     uint256 public constant MINIMUM_USD = 50 * 1e18;
     address public owner;
 
-    constructor() {
+    AggregatorV3Interface public PriceFeed;
+
+    constructor(address PriceFeedAddress) {
         owner = msg.sender;
+        PriceFeed = AggregatorV3Interface(PriceFeedAddress);
     }
 
     address[] public funders;
@@ -19,7 +22,7 @@ contract FundMe {
 
     function fundme() public payable {
         require(
-            msg.value.GetConversionRate() >= MINIMUM_USD,
+            msg.value.GetConversionRate(PriceFeed) >= MINIMUM_USD,
             "Amount entered is not enough"
         );
         funders.push(msg.sender);
